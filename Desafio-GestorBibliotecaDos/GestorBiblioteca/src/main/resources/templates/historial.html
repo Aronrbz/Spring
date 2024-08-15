@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Historial de Préstamos y Devoluciones</title>
+</head>
+<body>
+<h1>Historial</h1>
+<ul>
+    <li th:each="entrada : ${historial}" th:text="${entrada}"></li>
+</ul>
+<a href="/catalogo">Volver al Catálogo</a>
+</body>
+</html>

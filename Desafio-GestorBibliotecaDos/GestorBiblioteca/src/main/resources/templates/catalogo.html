@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Catálogo de Libros</title>
+</head>
+<body>
+<h1>Catálogo de Libros</h1>
+<table border="1">
+    <tr>
+        <th>Título</th>
+        <th>Autor</th>
+        <th>Acciones</th>
+    </tr>
+    <tr th:each="libro : ${libros}">
+        <td th:text="${libro.titulo}">Título del Libro</td>
+        <td th:text="${libro.autor}">Autor del Libro</td>
+        <td>
+            <form th:action="@{/prestar}" th:method="post">
+                <input type="hidden" th:name="titulo" th:value="${libro.titulo}"/>
+                <button type="submit">Prestar</button>
+            </form>
+            <form th:action="@{/devolver}" th:method="post" style="margin-top: 5px;">
+                <input type="hidden" th:name="titulo" th:value="${libro.titulo}"/>
+                <button type="submit">Devolver</button>
+            </form>
+        </td>
+    </tr>
+</table>
+<a href="/agregarLibro">Agregar Nuevo Libro</a>
+<a href="/historial" style="margin-left: 10px;">Ver Historial</a>
+</body>
+</html>
